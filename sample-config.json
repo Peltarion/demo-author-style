@@ -1,0 +1,8 @@
+{
+  "platformApi": {
+    "endpoint": "PELTARION_DEPLOYMENT_URI",
+    "token": "PELTARION_DEPLOYMENT_TOKEN"
+  },
+  "staticFilesPath": "LOCAL_DEVELOPMENT_HTML_FOLDER",
+  "keepModelWarmInterval": 120
+}

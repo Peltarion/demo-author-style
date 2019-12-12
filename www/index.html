@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Which author are you?</title>
+    <link href="https://fonts.googleapis.com/css?family=Special+Elite|Raleway&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/style.css"/>
+</head>
+<body data-state="input" id="main-view"><!-- input-States | result-States -->
+<div class="main">
+    <section class="input" id="input-view">
+        <div class="content-area">
+            <h2>Which author <br class="only-narrow"/>are you?</h2>
+            <form id="text-form">
+                <label for="text">Write a few sentences:</label><textarea id="text"></textarea>
+                <div class="input-button">
+                    <span class="idle">Analyze text</span>
+                    <span class="loading">Analyzing text</span>
+                    <input id="submit" type="submit" value="Analyze text"/>
+                    <div class="preloader">
+                        <div class="inner"></div>
+                    </div>
+                </div>
+                <div class="error-message service">It was not possible to complete your request, please try again</div>
+                <div class="error-message validation">Please enter more text (more than 8 words are needed)</div>
+            </form>
+        </div>
+        <div class="supplemental-area">
+            This application uses a neural network built on <a href="https://peltarion.com" target="_blank">Peltarion's&#xa0;platform</a>. The model is based  on the BERT architecture, and was trained on books from more than 60 authors.
+        </div>
+    </section>
+    <section data-state="rock" class="result" id="result-view">
+        <div class="content-area">
+            <h2>You write <br class="only-narrow"/>exactly like:</h2>
+            <h2 class="result-author" id="result-author"></h2>
+            <div class="result-text" id="result-text"></div>
+            <img id="result-image" src="" /><br />
+            <div class="attribution">Image from <a href="#" id="attribution-link" target="_blank">wikipedia</a></div>
+            <a href="#" id="restart-button">Do this again &xrArr;</a>
+        </div>
+        <div class="supplemental-area">
+            <a href="https://peltarion.com/knowledge-center/tutorials/author-style" class="tutorial-link" target="_blank">Build this model yourself</a>
+        </div>
+    </section>
+</div>
+<script type="text/javascript" src="/main.js"></script>
+</body>
+</html>

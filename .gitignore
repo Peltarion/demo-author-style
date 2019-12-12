@@ -1,0 +1,6 @@
+assets/
+node_modules/
+.idea/
+config/*
+.ipynb_checkpoints
+.DS_Store
