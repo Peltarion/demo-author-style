@@ -1,0 +1,396 @@
+/* structure / flow */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    font-family: 'Special Elite', monospace;
+    font-size: 14px;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    margin: 0;
+}
+
+h2 {
+    font-family: 'Special Elite', monospace;
+    font-size: 36px;
+    margin: 12px 0 24px 0 ;
+    font-weight: 300;
+}
+
+h3 {
+    font-size: 1.4em;
+    font-weight: 300;
+}
+
+body {
+    background: top/100% url("/images/text-background.jpg");
+    background-size: 1903px 2500px;
+    background-position: left -64px;
+}
+
+*[data-hidden] {
+    display: none !important;
+}
+
+.only-narrow {
+    display: none;
+}
+
+section {
+    padding: 0 20px;
+}
+
+section.result,
+section.input {
+    position: relative;
+    display: inline-block;
+    max-width: 843px;
+    width: 100%;
+    margin: 96px 0 64px;
+    text-align: center;
+}
+
+.content-area {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 40px 40px 60px 40px;
+    margin-top: 24px;
+    border: 6px solid #333;
+    border-radius: 0.1em;
+    width: 100%;
+    max-width: 646px;
+}
+
+/* input States */
+
+body[data-state=input] section.input {
+    display: inline-block;
+}
+
+body[data-state=input] section.result {
+    display: none;
+}
+
+.main {
+    min-height:100%;
+    position:relative;
+    top: 0;
+    z-index: 1;
+    background-position: 0 38px;
+}
+
+/* result States */
+
+body[data-state=result] section.input {
+    display: none;
+}
+
+body[data-state=result] section.result {
+    display: inline-block;
+}
+
+
+/* input section */
+
+form {
+    display: inline-block;
+    text-align: center;
+    width: 100%;
+    position: relative;
+}
+
+label {
+    display: block;
+    text-align: center;
+    font-size: 1.4em;
+    padding: 0;
+    margin: 0 0 0.5em;
+    font-weight: 300;
+}
+
+textarea {
+    display: block;
+    width: 100%;
+    height: 10em;
+    font: 300 1.6em 'Courier', monospace;
+    color: #666;
+    border: 1px solid #555;
+    margin-bottom: 1em;
+}
+
+textarea:focus {
+    outline: none;
+}
+
+.input-button {
+    display: inline-block;
+    border: 1px solid #888888;
+    padding: 1.1em 1em 0;
+    border-radius: 2em;
+    margin-top: 1em;
+}
+
+.input-button:hover {
+    background-color: #333333;
+    color: #fff;
+}
+
+section.input[data-state=loading] .input-button:hover {
+    background-color: #fff;
+    color: #888;
+}
+
+.preloader {
+    position: relative;
+    top: 5px;
+    left: 12px;
+    display: none;
+    width: 26px;
+    height: 26px;
+    padding: 2px;
+    opacity: 0.333;
+    background: url("images/loader-outline.svg") no-repeat center;
+}
+
+.preloader .inner {
+    width: 100%;
+    height: 100%;
+    background: url("images/loader-inner.svg") no-repeat center;
+    animation:spin 4s linear infinite;
+}
+
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+
+section.input[data-state=loading] .input-button {
+    color: #888;
+}
+
+section.input[data-state=loading] .input-button .preloader {
+    display: inline-block;
+}
+
+.error-message {
+    display: none;
+    color: darkred;
+    margin-top: 16px;
+    position: absolute;
+    width: 100%;
+    text-align: center;
+}
+
+section.input[data-state=service-error] .error-message.service,
+section.input[data-state=validation-error] .error-message.validation {
+    display: block;
+}
+
+.input-button {
+    display: inline-block;
+    margin-top: 24px;
+    position: relative;
+    border: 1px solid #000;
+    border-radius: 12px;
+    height: 51px;
+    width: 100%;
+    padding-top: 2px;
+    max-width: 100%;
+}
+
+.input-button input[type=submit] {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    color: transparent;
+    background: transparent;
+    border: none;
+}
+
+input[type=submit]:focus {
+    outline: none;
+}
+
+.input-button > span {
+    -webkit-appearance: none;
+    display: none;
+    font-family: 'Special Elite', monospace;
+    font-weight: 300;
+    font-size: 24px;
+    border: 0;
+    line-height: 50px;
+    background: transparent;
+}
+
+section.input:not([data-state=loading]) .input-button > span.idle,
+section.input[data-state=loading] .input-button > span.loading {
+    display: inline-block;
+}
+
+input[type=submit]:focus {
+    outline: none;
+}
+
+section.input .supplemental-area {
+    margin-top: 22px;
+    padding: 25px 25px 25px 75px;
+    width: 100%;
+    border-radius: 12px;
+    background: #fff url("images/icon-warning.svg") no-repeat 25px center;
+    background-size: 30px 30px;
+    font-family: 'Raleway', sans-serif;
+    text-align: left;
+    line-height: 20px;
+    font-weight: 900;
+    font-size: 16px;
+}
+
+section.input .supplemental-area a {
+    color: black;
+}
+
+/* result section */
+
+.content-area {
+    padding-bottom: 40px;
+}
+
+section.result img {
+    display: inline-block;
+    max-height: 300px;
+    filter: grayscale(1);
+    max-width: 100%;
+}
+
+section.result .attribution {
+    font: 100 1.0em Helvetica, Arial, sans-serif;
+    font-style: oblique;
+}
+
+section.result .attribution a {
+    color: #000;
+}
+
+section.result #restart-button {
+    display: inline-block;
+    font-family: 'Special Elite', monospace;
+    font-weight: 300;
+    font-size: 1.6em;
+    text-decoration: underline;
+    color: #333;
+    margin-top: 1em;
+}
+
+section.result h2.result-author {
+    text-transform: uppercase;
+}
+
+section .result-text {
+    display: block;
+    font: 300 1.6em 'Courier', monospace;
+    color: #666;
+    font-style: oblique;
+    margin: 1em 0;
+}
+
+section.result .tutorial-link {
+    display: inline-block;
+    border-radius: 12px;
+    -webkit-font-smoothing: antialiased;
+    font: normal 300 24px/47px "Special Elite", monospace;
+    text-decoration: none;
+    max-width: 100%;
+    height: 51px;
+    width: 646px;
+    background-color: #fff;
+    border: 6px solid #333;
+    color: #000;
+    margin-top: 20px;
+}
+
+section.result .tutorial-link:hover {
+    background-color: #333;
+    color: #fff;
+}
+
+
+
+@media only screen
+and (max-width: 883px) {
+    .only-wide {
+        display: none;
+    }
+}
+
+@media only screen
+and (max-width: 540px) {
+    nav {
+        padding-left: 22px;
+        padding-right: 22px;
+    }
+    .content-area {
+        padding: 20px 20px 40px 20px;
+        margin-top: 40px;
+    }
+
+    .only-narrow {
+        display: inline;
+    }
+
+    section.result .content-area {
+        padding-bottom: 20px;
+    }
+
+    .preloader {
+        top: 3px;
+        width: 18px;
+        height: 18px;
+    }
+
+    .error-message {
+        position: static;
+    }
+
+    h2 {
+        font-size: 26px;
+    }
+
+    label {
+        font-size: 19px;
+    }
+    textarea {
+        font-size: 16px;
+    }
+
+    .input-button {
+        height: 40px;
+        margin-top: 0;
+    }
+
+    .input-button > span {
+        font-size: 16px;
+        line-height: 40px;
+    }
+
+    section.result, section.input {
+        margin-top: 30px;
+    }
+
+    section.result .tutorial-link,
+    section.result #restart-button {
+        font-size: 18px !important;
+        line-height: 44px;
+    }
+
+    section.input .supplemental-area {
+        font-size: 14px;
+    }
+
+}
